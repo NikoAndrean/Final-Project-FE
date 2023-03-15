@@ -1,0 +1,38 @@
+Program Shopping Cart
+
+READ AND WRITE "listItems" with LIST
+READ AND WRITE "selectedItems" with RECORD
+READ AND WRITE "selecting" with BOOLEAN
+
+STORE "listItems" with "List_Items"
+STORE "selecting" with true
+
+While "selecting" Do
+	STORE "selectedItems" with "selected" from "ListItems"
+	"selectedItems.stock" more than "listItems["selectedIndex"].stock"
+END While
+
+READ AND WRITE "cart" with List
+"selectedItems.stock" add to "cart" 
+STORE "cart" with "selected" from "selectedItems"
+
+while add "selectedItems" into "ListItems" Do
+	STORE "selecting" with true 
+end while
+	
+READ AND WRITE "selectItemPaid" with LIST
+STORE "selectItemPaid" with "List_ItemPaid"
+
+READ AND WRITE "TotalPrice" with number
+STORE "TotalPrice" with calculateTotal "List_ItemPaid"
+
+READ AND WRITE "credit" with number
+STORE "credit" with any number
+
+While "credit" less than "TotalPrice" Do
+	STORE "credit" with any number
+END WHILE
+
+READ AND WRITE "payment" with number
+STORE "payment" with number "TotalPrice"
+PRINT "payment"
