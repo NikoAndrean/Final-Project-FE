@@ -9,12 +9,12 @@ STORE "selecting" with true
 
 While "selecting" Do
 	STORE "selectedItems" with "selected" from "ListItems"
-	"selectedItems.stock" more than "listItems["selectedIndex"].stock"
+	STORE "selectedItems.stock" more than "listItems["selectedIndex"].stock"
 END While
 
-READ AND WRITE "cart" with List
-"selectedItems.stock" add to "cart" 
+READ AND WRITE "cart" with List 
 STORE "cart" with "selected" from "selectedItems"
+add "selectedItems.stock"  into "cart"
 
 while add "selectedItems" into "ListItems" Do
 	STORE "selecting" with true 
