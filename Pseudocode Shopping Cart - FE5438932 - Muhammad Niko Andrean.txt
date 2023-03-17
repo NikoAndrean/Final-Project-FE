@@ -1,37 +1,30 @@
 Program Shopping Cart
 
 READ AND WRITE "listItems" with LIST
+READ AND WRITE "Items" with LIST
 READ AND WRITE "selectedItems" with RECORD
 READ AND WRITE "selecting" with BOOLEAN
 
 STORE "listItems" with "List_Items"
+STORE "Items" with any Items
 STORE "selecting" with true
 
-While "selecting" Do
-	STORE "selectedItems" with "selected" from "ListItems"
-	STORE "selectedItems.stock" more than "listItems["selectedIndex"].stock"
-END While
+READ AND WRITE "cart" with LIST
 
-READ AND WRITE "cart" with List 
-STORE "cart" with "selected" from "selectedItems"
-add "selectedItems.stock"  into "cart"
-
-while add "selectedItems" into "ListItems" Do
+While "selecting" do
+STORE "selectedItems" with "Items" from "ListItems"
+	if STORE "selectedItems.stock" less than "Items.stock" 
+		STORE "selectedItems.stock" add  into "cart"
+		
+	add "selectedItems" into "ListItems" 
 	STORE "selecting" with true 
-end while
+END While
 	
 READ AND WRITE "selectItemPaid" with LIST
 STORE "selectItemPaid" with "List_ItemPaid"
 
 READ AND WRITE "TotalPrice" with number
 STORE "TotalPrice" with calculateTotal "List_ItemPaid"
-
-READ AND WRITE "credit" with number
-STORE "credit" with any number
-
-While "credit" less than "TotalPrice" Do
-	STORE "credit" with any number
-END WHILE
 
 READ AND WRITE "payment" with number
 STORE "payment" with number "TotalPrice"
